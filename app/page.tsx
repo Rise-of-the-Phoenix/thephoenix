@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import logo from './phoenix.png'
 import SubmitButton from "./submitButton";
+import 'bootstrap/dist/css/bootstrap.css';
+import './page.css'
 
  
 export default function Home() {

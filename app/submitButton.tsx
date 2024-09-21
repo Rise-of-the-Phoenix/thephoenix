@@ -40,7 +40,17 @@ function SubmitButton() {
                 >
                     Get Recommendations
                 </button>
-                <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
+                <div class="row">
+                  <div class="col-6" id="result">
+                  <h5>Crop Recommendation</h5>
+                    <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
+                  </div>
+                  <div class="col-6" id="result">
+                  <h5>Soil Suggestion</h5>
+                    <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
+                  </div>
+
+                </div>
             </div>
         )
 }
