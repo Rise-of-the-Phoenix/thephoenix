@@ -1,7 +1,8 @@
 import Image from "next/image";
-import 'bootstrap/dist/css/bootstrap.css';
 import React from "react";
 import logo from './phoenix.png'
+import SubmitButton from "./submitButton";
+
  
 export default function Home() {
   return (
@@ -18,16 +19,17 @@ export default function Home() {
         <input type="text" placeholder="Nitrogen" className="border p-2" />
         <input type="text" placeholder="Phosphorus" className="border p-2" />
         <input type="text" placeholder="Potassium" className="border p-2" />
-        <input type="text" placeholder="Ph Level" className="border p-2" />
+        <input type="text" placeholder="Ph" className="border p-2" />
         <select className="border p-2" defaultValue="">
           <option value="" disabled>Soil Type</option>
-          <option value="silt">Silt</option>
+          <option value="Loamy">Loamy</option>
           <option value="clay">Clay</option>
           <option value="sand">Sand</option>
         </select>
         <input type="text" placeholder="Water Level" className="border p-2" />
+        <SubmitButton />
       </div>
-      <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Submit</button>
+      
       </main>
       
     </div>
