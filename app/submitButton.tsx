@@ -83,7 +83,7 @@ function SubmitButton() {
 
         return (
             <div>
-                <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={fetchData}>
+                <button class="btn btn-success btn-md" onClick={fetchData} id="getrecon">
                     Get Recommendations
                 </button>
                 {(cropSuggestion || soilImprovements) && (

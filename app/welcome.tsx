@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
+import './page.css'
+import 'bootstrap/dist/css/bootstrap.css';
 
 function WelcomeButton() {
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -30,10 +32,10 @@ function WelcomeButton() {
     };
 
     return (
-        <div className="bg-lime-600 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
-            <h1>Welcome to Farmers Friend</h1>
-            <p>Put your Phone Number in and get started</p>
-            <form onSubmit={handleSubmit}>
+        <div id="welcome">
+            <h1 id="welcome-h1">Welcome to Farmers Friend</h1>
+            <p id="welcome-p">Put your Phone Number in and get started</p>
+            <form onSubmit={handleSubmit} id="onsubmit">
                 <TextField
                     required
                     id="outlined-required"
@@ -42,8 +44,8 @@ function WelcomeButton() {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="Enter your phone number"
                 />
-                <button type="submit">Submit</button>
             </form>
+            <button class="btn btn-success btn-md" type="submit" id="submit">Submit</button>
         </div>
     );
 };
