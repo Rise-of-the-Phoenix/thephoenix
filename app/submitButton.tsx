@@ -1,32 +1,67 @@
 "use client";
 import React, { useState } from "react";
+import { LineChart } from '@mui/x-charts/LineChart';
  
 function SubmitButton() {
 
     const [cropSuggestion, setCropSuggestion] = useState('');
     const [soilImprovements, setSoilImprovements] = useState('');
+    const [nitrogenArray, setNitrogenArray] = useState<number[]>([]);
+    const [phosphorusArray, setPhosphorusArray] = useState<number[]>([]);
+    const [potassiumArray, setPotassiumArray] = useState<number[]>([]);
+    const [phArray, setPhArray] = useState<number[]>([]);
+    const [soilTypeArray, setSoilTypeArray] = useState<number[]>([]);
+    const [waterLevelArray, setWaterLevelArray] = useState<number[]>([]);
+   
     // const [chatAI, setChatAI] = useState('');
     // const [chatUser, setChatUser] = useState('');
     
     const fetchData = async () => {
         try {
             const data = {
-                nitrogen: (document.getElementById('outlined-adornment-nitrogen') as HTMLInputElement)?.value || '',
-                phosphorus: (document.getElementById('outlined-adornment-phosphorus') as HTMLInputElement)?.value || '',
-                potassium: (document.getElementById('outlined-adornment-potassium') as HTMLInputElement)?.value || '',
+            record_id: localStorage.getItem('phoneNumber'),
+            data: {
+                nitrogen: `${(document.getElementById('outlined-adornment-nitrogen') as HTMLInputElement)?.value || ''}mg/kg`,
+                phosphorus: `${(document.getElementById('outlined-adornment-phosphorus') as HTMLInputElement)?.value || ''}mg/kg`,
+                potassium: `${(document.getElementById('outlined-adornment-potassium') as HTMLInputElement)?.value || ''}mg/kg`,
                 ph: (document.getElementById('outlined-adornment-ph') as HTMLInputElement)?.value || '',
                 soil_type: (document.querySelector('select')?.value || ''),
-                water_level: (document.getElementById('outlined-adornment-water') as HTMLInputElement)?.value || '',
+                water_level: `${(document.getElementById('outlined-adornment-water') as HTMLInputElement)?.value || ''}%`,
+            }
             };
 
-            const response = await fetch('https://3br1dt5rr1.execute-api.us-east-1.amazonaws.com/test/recommendations', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
+            const record = await fetch('https://yab6hygijj.execute-api.us-east-1.amazonaws.com/ai/create_record', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            });
+            const recordResult = await record.json();
+            const recordData = await recordResult.data;
+            
+            recordData.forEach((item: any) => {
+            item.nitrogen = parseInt(item.nitrogen.replace('mg/kg', ''), 10);
+            item.phosphorus = parseInt(item.phosphorus.replace('mg/kg', ''), 10);
+            item.potassium = parseInt(item.potassium.replace('mg/kg', ''), 10);
+            item.water_level = parseInt(item.water_level.replace('%', ''), 10);
+            });
+
+            setNitrogenArray(recordData.map((item: any) => item.nitrogen));
+            setPhosphorusArray(recordData.map((item: any) => item.phosphorus));
+            setPotassiumArray(recordData.map((item: any) => item.potassium));
+            setPhArray(recordData.map((item: any) => item.ph));
+            setSoilTypeArray(recordData.map((item: any) => item.soil_type));
+            setWaterLevelArray(recordData.map((item: any) => item.water_level));
+            
+            const response = await fetch('https://yab6hygijj.execute-api.us-east-1.amazonaws.com/ai/recommendations', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
               });
-                
+            
               const result = await response.json();
               console.log(result);
               setCropSuggestion(result.ai_response.cropRecommendations.join('\n'));
@@ -41,9 +76,9 @@ function SubmitButton() {
             //     .join('\n');
             //   setChatAI(assistantMessages);
             //   setChatUser(userMessages);
-                } catch (error) {
+            } catch (error) {
               console.error('There was a problem with the fetch operation:', error);
-                }
+            }
         };
 
         return (
@@ -55,7 +90,7 @@ function SubmitButton() {
                     Get Recommendations
                 </button>
                 {(cropSuggestion || soilImprovements) && (
-                    <div className="flex mt-4">
+                    <div className="bg-yellow-900 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
                         {cropSuggestion && (
                             <div className="mr-4">
                                 <label className="block text-lg font-medium text-gray-700">Crop Recommendations</label>
@@ -70,7 +105,21 @@ function SubmitButton() {
                         )}
                     </div>
                 )}
-                
+                {(nitrogenArray.length > 0 && phosphorusArray.length > 0 && potassiumArray.length > 0) && (
+                    <div className="bg-yellow-100 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
+                        <LineChart
+                            width={500}
+                            height={300}
+                            sx={{ backgroundColor: 'cream' }}
+                            series={[
+                                { data: nitrogenArray, label: 'N' },
+                                { data: phosphorusArray, label: 'P' },
+                                { data: potassiumArray, label: 'K'}
+                            ]}
+                            xAxis={[{ scaleType: 'point', data: nitrogenArray.map((_, index) => `${index + 1}`) }]}
+                        />
+                    </div>
+                )}
             </div>
         )
 }

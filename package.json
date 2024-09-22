@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^6.1.1",
     "@mui/styles": "^6.1.1",
+    "@mui/x-charts": "^7.18.0",
     "@next/font": "^14.2.13",
     "bootstrap": "^5.3.3",
     "next": "14.2.13",
