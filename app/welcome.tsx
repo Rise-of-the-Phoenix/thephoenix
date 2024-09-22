@@ -1,8 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
+interface WelcomeButtonProps {
+    className?: string;
+}
 
-function WelcomeButton() {
+const WelcomeButton: React.FC<WelcomeButtonProps> = ({ className }) => {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {

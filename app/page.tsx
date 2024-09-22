@@ -10,85 +10,90 @@ import farm from './farm.jpg'
 import WelcomeButton from "./welcome";
  
 export default function Home() {
- 
+   
+
   return (
     <div style={{ 
       backgroundImage: `url(${farm.src})`,
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      minHeight: '100vh',
-      width: '100%',
+      backgroundAttachment: 'fixed',
       top: 0,
       left: 0,
       overflow: 'auto',
     }}>
-      <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <WelcomeButton />
-        <div id="input-section" className="bg-lime-600 rounded-lg p-4 border border-green-800">
-          <div className="grid grid-cols-3 grid-rows-2 gap-4">
-            
-        <FormControl sx={{ m: 1, width: '25ch', color: 'white'}} variant="outlined">
+      <div className="grid grid-cols-1 grid-rows-3 gap-4 items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <div className="absolute col-start-1 row-start-1 inset-0 flex justify-center items-center h-screen">
+          <WelcomeButton />
+        </div>
+
+        <div className="col-start-1 row-start-1">
+          <div style={{ height: '450px' }}></div>
+        </div>
+         
+      
+      <div id="input-section" className="bg-lime-600 rounded-lg p-4 border border-green-800 col-start-1 row-start-2 grid grid-cols-2 grid-rows-3 gap-4" style={{ margin: '10px', width: '30%', float:'left'}}>
+        <FormControl sx={{ m: 1, width: '10ch', color: 'white' }} variant="outlined">
           <OutlinedInput
-          id="outlined-adornment-nitrogen"
-          sx={{ backgroundColor: 'white' }}
-          endAdornment={<InputAdornment position="end">mg/kg</InputAdornment>}
-          aria-describedby="outlined-nitrogen-helper-text"
-          inputProps={{
-            'aria-label': 'nitrogen',
-          }}
+            id="outlined-adornment-nitrogen"
+            sx={{ backgroundColor: 'white' }}
+            endAdornment={<InputAdornment position="end">mg/kg</InputAdornment>}
+            aria-describedby="outlined-nitrogen-helper-text"
+            inputProps={{
+              'aria-label': 'nitrogen',
+            }}
           />
           <FormHelperText id="outlined-nitrogen-helper-text" sx={{ color: 'white' }}>Nitrogen</FormHelperText>
         </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '10ch' }} variant="outlined">
           <OutlinedInput
-          id="outlined-adornment-phosphorus"
-          sx={{ backgroundColor: 'white' }}
-          endAdornment={<InputAdornment position="end">mg/kg</InputAdornment>}
-          aria-describedby="outlined-phosphorus-helper-text"
-          inputProps={{
-            'aria-label': 'phosphorus',
-          }}
+            id="outlined-adornment-phosphorus"
+            sx={{ backgroundColor: 'white' }}
+            endAdornment={<InputAdornment position="end">mg/kg</InputAdornment>}
+            aria-describedby="outlined-phosphorus-helper-text"
+            inputProps={{
+              'aria-label': 'phosphorus',
+            }}
           />
           <FormHelperText id="outlined-phosphorus-helper-text" sx={{ color: 'white' }}>Phosphorus</FormHelperText>
         </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch' , color: 'white'}} variant="outlined">
+        <FormControl sx={{ m: 1, width: '10ch', color: 'white' }} variant="outlined">
           <OutlinedInput
-          id="outlined-adornment-potassium"
-          sx={{ backgroundColor: 'white' }}
-          endAdornment={<InputAdornment position="end">mg/kg</InputAdornment>}
-          aria-describedby="outlined-potassium-helper-text"
-          inputProps={{
-            'aria-label': 'Potassium',
-          }}
+            id="outlined-adornment-potassium"
+            sx={{ backgroundColor: 'white' }}
+            endAdornment={<InputAdornment position="end">mg/kg</InputAdornment>}
+            aria-describedby="outlined-potassium-helper-text"
+            inputProps={{
+              'aria-label': 'Potassium',
+            }}
           />
           <FormHelperText id="outlined-potassium-helper-text" sx={{ color: 'white' }}>Potassium</FormHelperText>
         </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch', color: 'white' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '10ch', color: 'white' }} variant="outlined">
           <OutlinedInput
-          id="outlined-adornment-ph"
-          sx={{ backgroundColor: 'white' }}
-          endAdornment={<InputAdornment position="end"></InputAdornment>}
-          aria-describedby="outlined-ph-helper-text"
-          inputProps={{
-            'aria-label': 'Ph level',
-          }}
+            id="outlined-adornment-ph"
+            sx={{ backgroundColor: 'white' }}
+            endAdornment={<InputAdornment position="end"></InputAdornment>}
+            aria-describedby="outlined-ph-helper-text"
+            inputProps={{
+              'aria-label': 'Ph level',
+            }}
           />
           <FormHelperText id="outlined-ph-helper-text" sx={{ color: 'white' }}>Ph Level</FormHelperText>
         </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch', color: 'white' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '10ch', color: 'white' }} variant="outlined">
           <OutlinedInput
-          id="outlined-adornment-water"
-          sx={{ backgroundColor: 'white' }}
-          endAdornment={<InputAdornment position="end">%</InputAdornment>}
-          aria-describedby="outlined-water-helper-text"
-          inputProps={{
-            'aria-label': 'Water Level',
-          }}
+            id="outlined-adornment-water"
+            sx={{ backgroundColor: 'white' }}
+            endAdornment={<InputAdornment position="end">%</InputAdornment>}
+            aria-describedby="outlined-water-helper-text"
+            inputProps={{
+              'aria-label': 'Water Level',
+            }}
           />
           <FormHelperText id="outlined-water-helper-text" sx={{ color: 'white' }}>Water Level</FormHelperText>
         </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+        <FormControl sx={{ m: 1, width: '10ch' }} variant="outlined">
           <select className="border p-2 rounded-lg" defaultValue="" style={{ width: '100%', height: '56px' }}>
             <option value="" disabled>Soil Type</option>
             <option value="Loamy">Loamy</option>
@@ -96,18 +101,22 @@ export default function Home() {
             <option value="sand">Sand</option>
           </select>
         </FormControl>
-          </div>
-          </div>
-        
-      <div>
-        <SubmitButton />
       </div>
+      
         
-    
-       
+        <div className="col-start-1 row-start-2 mt-4"  style={{ margin: '10px', float:'right'}}> 
+          <SubmitButton />
+        </div>
+        <div id="graphics-section" className="col-start-2 row-start-2 row-span-2">
+          {/* Graphics generated by SubmitButton will be displayed here */}
+        </div>
 
-      </main>
+        <div className="col-start-1 row-start-3 ">
+          <div style={{ height: '150px' }}></div>
+        </div>
       </div>
+
+      
    </div>
   );
 }
