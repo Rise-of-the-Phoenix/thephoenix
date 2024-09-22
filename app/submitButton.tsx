@@ -3,18 +3,18 @@ import React, { useEffect, useState } from 'react';
  
 function SubmitButton() {
 
-  const [suggestion, setSuggestion] = useState('');
+    const [suggestion, setSuggestion] = useState('');
     
     const fetchData = async () => {
         try {
             const data = {
-                nitrogen: (document.querySelector('input[placeholder="Nitrogen"]') as HTMLInputElement).value,
-                phosphorus: (document.querySelector('input[placeholder="Phosphorus"]') as HTMLInputElement).value,
-                potassium: (document.querySelector('input[placeholder="Potassium"]') as HTMLInputElement).value,
-                ph: (document.querySelector('input[placeholder="Ph"]') as HTMLInputElement).value,
+                nitrogen: (document.getElementById('outlined-adornment-nitrogen') as HTMLInputElement)?.value || '',
+                phosphorus: (document.getElementById('outlined-adornment-phosphorus') as HTMLInputElement)?.value || '',
+                potassium: (document.getElementById('outlined-adornment-potassium') as HTMLInputElement)?.value || '',
+                ph: (document.getElementById('outlined-adornment-ph') as HTMLInputElement)?.value || '',
                 soil_type: (document.querySelector('select')?.value || ''),
-                water_level: (document.querySelector('input[placeholder="Water Level"]') as HTMLInputElement).value,
-                  };
+                water_level: (document.getElementById('outlined-adornment-water') as HTMLInputElement)?.value || '',
+            };
 
             const response = await fetch('https://3br1dt5rr1.execute-api.us-east-1.amazonaws.com/test/recommendations', {
                 method: 'POST',
@@ -23,12 +23,10 @@ function SubmitButton() {
                 },
                 body: JSON.stringify(data),
               });
-
+                
               const result = await response.json();
               console.log(result);
-              setSuggestion(JSON.stringify(result, null, 2)); 
-              
-
+              setSuggestion(JSON.stringify(result, null, 2));
                 } catch (error) {
               console.error('There was a problem with the fetch operation:', error);
                 }
@@ -39,17 +37,7 @@ function SubmitButton() {
                 <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={fetchData}>
                     Get Recommendations
                 </button>
-                <div class="row">
-                  <div class="col-6" id="result">
-                  <h5>Crop Recommendation</h5>
-                    <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
-                  </div>
-                  <div class="col-6" id="result">
-                  <h5>Soil Suggestion</h5>
-                    <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
-                  </div>
-
-                </div>
+                <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
             </div>
         )
 
