@@ -1,11 +1,4 @@
 "use client";
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react';
- 
-function SubmitButton() {
-
-    const [suggestion, setSuggestion] = useState('');
-=======
 import React, { useState } from "react";
 import { LineChart } from '@mui/x-charts/LineChart';
  
@@ -22,7 +15,6 @@ function SubmitButton() {
    
     // const [chatAI, setChatAI] = useState('');
     // const [chatUser, setChatUser] = useState('');
->>>>>>> origin/main
     
     const fetchData = async () => {
         try {
@@ -72,10 +64,6 @@ function SubmitButton() {
             
               const result = await response.json();
               console.log(result);
-<<<<<<< HEAD
-              setSuggestion(JSON.stringify(result, null, 2));
-                } catch (error) {
-=======
               setCropSuggestion(result.ai_response.cropRecommendations.join('\n'));
               setSoilImprovements(result.ai_response.soilImprovements.join('\n'));
             //   const userMessages = result.chat_history
@@ -89,7 +77,6 @@ function SubmitButton() {
             //   setChatAI(assistantMessages);
             //   setChatUser(userMessages);
             } catch (error) {
->>>>>>> origin/main
               console.error('There was a problem with the fetch operation:', error);
             }
         };
@@ -99,9 +86,6 @@ function SubmitButton() {
                 <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={fetchData}>
                     Get Recommendations
                 </button>
-<<<<<<< HEAD
-                <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
-=======
                 {(cropSuggestion || soilImprovements) && (
                     <div className="bg-yellow-900 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
                         {cropSuggestion && (
@@ -133,7 +117,6 @@ function SubmitButton() {
                         />
                     </div>
                 )}
->>>>>>> origin/main
             </div>
         )
 
