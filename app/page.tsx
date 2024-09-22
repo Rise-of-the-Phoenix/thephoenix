@@ -6,27 +6,8 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
 import FormHelperText from '@mui/material/FormHelperText';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import MenuItem from '@mui/material/MenuItem';
  
 export default function Home() {
-
-  const soils = [
-    {
-      value: 'Clay',
-      label: 'Clay',
-    },
-    {
-      value: 'Loamy',
-      label: 'Loamy',
-    },
-    {
-      value: 'Sand',
-      label: 'Sand',
-    },
-  ];
-
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">

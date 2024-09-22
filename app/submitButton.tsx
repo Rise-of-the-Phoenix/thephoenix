@@ -5,8 +5,8 @@ function SubmitButton() {
 
     const [cropSuggestion, setCropSuggestion] = useState('');
     const [soilImprovements, setSoilImprovements] = useState('');
-    const [chatAI, setChatAI] = useState('');
-    const [chatUser, setChatUser] = useState('');
+    // const [chatAI, setChatAI] = useState('');
+    // const [chatUser, setChatUser] = useState('');
     
     const fetchData = async () => {
         try {
@@ -31,16 +31,16 @@ function SubmitButton() {
               console.log(result);
               setCropSuggestion(result.ai_response.cropRecommendations.join('\n'));
               setSoilImprovements(result.ai_response.soilImprovements.join('\n'));
-              const userMessages = result.chat_history
-                .filter((message: any) => message.role === 'user')
-                .map((message: any) => message.content.map((content: any) => content.text).join('\n'))
-                .join('\n');
-              const assistantMessages = result.chat_history
-                .filter((message: any) => message.role === 'assistant')
-                .map((message: any) => message.content.map((content: any) => content.text).join('\n'))
-                .join('\n');
-              setChatAI(assistantMessages);
-              setChatUser(userMessages);
+            //   const userMessages = result.chat_history
+            //     .filter((message: any) => message.role === 'user')
+            //     .map((message: any) => message.content.map((content: any) => content.text).join('\n'))
+            //     .join('\n');
+            //   const assistantMessages = result.chat_history
+            //     .filter((message: any) => message.role === 'assistant')
+            //     .map((message: any) => message.content.map((content: any) => content.text).join('\n'))
+            //     .join('\n');
+            //   setChatAI(assistantMessages);
+            //   setChatUser(userMessages);
                 } catch (error) {
               console.error('There was a problem with the fetch operation:', error);
                 }
