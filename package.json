@@ -14,10 +14,12 @@
     "@mui/material": "^6.1.1",
     "@mui/styles": "^6.1.1",
     "@next/font": "^14.2.13",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "next": "14.2.13",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "requests": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "^20",

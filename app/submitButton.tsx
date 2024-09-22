@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
  
 function SubmitButton() {
 
-    const [suggestion, setSuggestion] = useState('');
+  const [suggestion, setSuggestion] = useState('');
     
     const fetchData = async () => {
         try {
@@ -26,7 +26,9 @@ function SubmitButton() {
 
               const result = await response.json();
               console.log(result);
-              setSuggestion(JSON.stringify(result, null, 2));
+              setSuggestion(JSON.stringify(result, null, 2)); 
+              
+
                 } catch (error) {
               console.error('There was a problem with the fetch operation:', error);
                 }
@@ -34,10 +36,7 @@ function SubmitButton() {
 
         return (
             <div>
-                <button
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-                    onClick={fetchData}
-                >
+                <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded" onClick={fetchData}>
                     Get Recommendations
                 </button>
                 <div class="row">
@@ -53,6 +52,7 @@ function SubmitButton() {
                 </div>
             </div>
         )
+
 }
 
 export default SubmitButton;
