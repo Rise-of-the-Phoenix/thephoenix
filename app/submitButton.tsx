@@ -3,7 +3,10 @@ import React, { useState } from "react";
  
 function SubmitButton() {
 
-    const [suggestion, setSuggestion] = useState('');
+    const [cropSuggestion, setCropSuggestion] = useState('');
+    const [soilImprovements, setSoilImprovements] = useState('');
+    const [chatAI, setChatAI] = useState('');
+    const [chatUser, setChatUser] = useState('');
     
     const fetchData = async () => {
         try {
@@ -15,8 +18,6 @@ function SubmitButton() {
                 soil_type: (document.querySelector('select')?.value || ''),
                 water_level: (document.getElementById('outlined-adornment-water') as HTMLInputElement)?.value || '',
             };
-            console.log("WOWOWOWOWOWOWOW EA*IUGWDGAWIUDGAWIUDGIWA");
-            console.log(data.soil_type);
 
             const response = await fetch('https://3br1dt5rr1.execute-api.us-east-1.amazonaws.com/test/recommendations', {
                 method: 'POST',
@@ -28,7 +29,18 @@ function SubmitButton() {
                 
               const result = await response.json();
               console.log(result);
-              setSuggestion(JSON.stringify(result, null, 2));
+              setCropSuggestion(result.ai_response.cropRecommendations.join('\n'));
+              setSoilImprovements(result.ai_response.soilImprovements.join('\n'));
+              const userMessages = result.chat_history
+                .filter((message: any) => message.role === 'user')
+                .map((message: any) => message.content.map((content: any) => content.text).join('\n'))
+                .join('\n');
+              const assistantMessages = result.chat_history
+                .filter((message: any) => message.role === 'assistant')
+                .map((message: any) => message.content.map((content: any) => content.text).join('\n'))
+                .join('\n');
+              setChatAI(assistantMessages);
+              setChatUser(userMessages);
                 } catch (error) {
               console.error('There was a problem with the fetch operation:', error);
                 }
@@ -42,7 +54,23 @@ function SubmitButton() {
                 >
                     Get Recommendations
                 </button>
-                <textarea value={suggestion} className="mt-4 p-2 w-full h-48" readOnly />
+                {(cropSuggestion || soilImprovements) && (
+                    <div className="flex mt-4">
+                        {cropSuggestion && (
+                            <div className="mr-4">
+                                <label className="block text-lg font-medium text-gray-700">Crop Recommendations</label>
+                                <textarea value={cropSuggestion} className="mt-2 p-2 w-full h-48" readOnly />
+                            </div>
+                        )}
+                        {soilImprovements && (
+                            <div>
+                                <label className="block text-lg font-medium text-gray-700">Soil Improvements</label>
+                                <textarea value={soilImprovements} className="mt-2 p-2 w-full h-48" style={{ width: '200%' }} readOnly />
+                            </div>
+                        )}
+                    </div>
+                )}
+                
             </div>
         )
 }
