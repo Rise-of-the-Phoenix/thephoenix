@@ -45,7 +45,7 @@ function WelcomeButton() {
                     placeholder="Enter your phone number"
                 />
             </form>
-            <button class="btn btn-success btn-md" type="submit" id="submit">Submit</button>
+            <button class="btn btn-success btn-sm" type="submit" id="submit">Submit</button>
         </div>
     );
 };

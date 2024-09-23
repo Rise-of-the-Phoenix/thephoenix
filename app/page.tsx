@@ -22,7 +22,7 @@ export default function Home() {
     <nav class="navbar navbar-dark bg-dark navbar-static-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img src="./phoenix.png"></img>Team Phoenix
+          <img src="./phoenix.png" width={30} height={30}></img>Team Phoenix
         </a>
       </div>
     </nav>
