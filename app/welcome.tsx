@@ -5,7 +5,7 @@ interface WelcomeButtonProps {
     className?: string;
 }
 
-const WelcomeButton: React.FC<WelcomeButtonProps> = ({ className }) => {
+const WelcomeButton: React.FC<WelcomeButtonProps> = ({}) => {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -34,18 +34,33 @@ const WelcomeButton: React.FC<WelcomeButtonProps> = ({ className }) => {
 
     return (
         <div className="bg-lime-600 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
-            <h1>Welcome to Farmers Friend</h1>
-            <p>Put your Phone Number in and get started</p>
-            <form onSubmit={handleSubmit}>
+            <h1 style={{ fontSize: '2em', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Welcome to Farmers Friend</h1>
+            <p style={{ fontSize: '1em', color: 'white', textAlign: 'center' }}>Put your Phone Number in and get started</p>
+            <form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
                 <TextField
                     required
                     id="outlined-required"
                     label="Required"
+                    sx={{ backgroundColor: 'white' }}
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="Enter your phone number"
                 />
-                <button type="submit">Submit</button>
+
+                <div style={{ marginTop: '1em' }}></div>
+                <button 
+                    type="submit" 
+                    style={{ 
+                        borderRadius: '12px', 
+                        padding: '0.5em 1em', 
+                        backgroundColor: '#4CAF50', 
+                        color: 'white', 
+                        border: 'none', 
+                        cursor: 'pointer' 
+                    }}
+                >
+                    Submit
+                </button>
             </form>
         </div>
     );
