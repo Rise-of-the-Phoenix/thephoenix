@@ -19,9 +19,9 @@ export default function Home() {
     
   <div>
 
-    <nav class="navbar fixed-top navbar-tertiary">
-      <div class="container">
-        <a class="navbar-brand" href="#" id="img"></a>
+    <nav className="navbar fixed-top navbar-tertiary">
+      <div className="container">
+        <a className="navbar-brand" href="#" id="img"></a>
         <h4 id="teamname">Team Phoenix</h4>
       </div>
     </nav>
@@ -31,7 +31,7 @@ export default function Home() {
       <div className="grid grid-rows-[20px_1fr_20px] items-center min-h-screen gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
         <main className="flex flex-col items-center sm:items-start" id="main">
           <WelcomeButton />
-            <div id="input-section" className="bg-lime-600 rounded-lg p-4 border" id = "modal">
+            <div id="modal" className="bg-lime-600 rounded-lg p-4 border">
               <div className="grid grid-cols-3 grid-rows-2 gap-4">
                 <FormControl variant="outlined">
                   <OutlinedInput

@@ -123,10 +123,10 @@ function SubmitButton() {
  
         return (
             <div>
-                <button class="btn btn-success btn-lg" onClick={fetchData} id="getrecon">Get recommendations</button>
+                <button className="btn btn-success btn-lg" onClick={fetchData} id="getrecon">Get recommendations</button>
                 
-                <div class="row">
-                    <div class="col-5" id="linechart">
+                <div className="row">
+                    <div className="col-5" id="linechart">
                         {(nitrogenArray.length > 0 && phosphorusArray.length > 0 && potassiumArray.length > 0) && (
                             <div className=" mx-auto">
                             <LineChart
@@ -137,13 +137,36 @@ function SubmitButton() {
                                     { data: phosphorusArray, label: 'P' },
                                     { data: potassiumArray, label: 'K'}
                                 ]}
+                                sx={{
+                                    //change left yAxis label styles
+                                   "& .MuiChartsAxis-left .MuiChartsAxis-tickLabel":{
+                                    fill:"#FFFFFF"
+                                   },
+                                    // change bottom label styles
+                                    "& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel":{
+                                        fill:"#FFFFFF"
+                                     },
+                                      // bottomAxis Line Styles
+                                     "& .MuiChartsAxis-bottom .MuiChartsAxis-line":{
+                                      stroke:"#FFFFFF",
+                                     },
+                                     // leftAxis Line Styles
+                                     "& .MuiChartsAxis-left .MuiChartsAxis-line":{
+                                      stroke:"#FFFFFF",
+                                     },
+                                      // leftAxis Line Styles
+                                      "&.MuiChartsAxis-tick":{
+                                        stroke:"#FFFFFF",
+                                       }
+                                     
+                                  }}
                                 xAxis={[{ scaleType: 'point', data: nitrogenArray.map((_, index) => `${index + 1}`) }]}
                             />
                             </div>
                         )}
                     </div>
 
-                    <div class="col-3">
+                    <div className="col-3">
                         {(cropSuggestion || soilImprovements || recommendedNitrogen) && (
                             <div className="mx-auto c" id="linechart2">
                                 {cropSuggestion && (
@@ -168,7 +191,7 @@ function SubmitButton() {
                         )}
                     </div>
 
-                    <div class="col-4">
+                    <div className="col-4">
                         {(metricNitrogen || metricPhosphorus || metricPotassium || metricPh || metricSoilStructure || metricOverall) && (
                             <div className="mx-auto" id="linechart3">
                                 {metricNitrogen !== undefined && (
@@ -188,6 +211,9 @@ function SubmitButton() {
                                                         [`& .${gaugeClasses.referenceArc}`]: {
                                                             fill: theme.palette.text.disabled,
                                                         },
+                                                        [`& .${gaugeClasses.valueText} text`]: {
+                                                            fill: "#FFFFFF" 
+                                                          },
                                                     })}
                                                 />
                                             </div>
@@ -209,6 +235,9 @@ function SubmitButton() {
                                                 [`& .${gaugeClasses.referenceArc}`]: {
                                                     fill: theme.palette.text.disabled,
                                                 },
+                                                [`& .${gaugeClasses.valueText} text`]: {
+                                                    fill: "#FFFFFF" 
+                                                  },
                                             })}
                                         />
                                     </div>
@@ -229,6 +258,9 @@ function SubmitButton() {
                                                 [`& .${gaugeClasses.referenceArc}`]: {
                                                     fill: theme.palette.text.disabled,
                                                 },
+                                                [`& .${gaugeClasses.valueText} text`]: {
+                                                    fill: "#FFFFFF" 
+                                                  },
                                             })}
                                         />
                                     </div>
@@ -249,6 +281,9 @@ function SubmitButton() {
                                                 [`& .${gaugeClasses.referenceArc}`]: {
                                                     fill: theme.palette.text.disabled,
                                                 },
+                                                [`& .${gaugeClasses.valueText} text`]: {
+                                                    fill: "#FFFFFF" 
+                                                  },
                                             })}
                                         />
                                     </div>
@@ -269,6 +304,9 @@ function SubmitButton() {
                                                 [`& .${gaugeClasses.referenceArc}`]: {
                                                     fill: theme.palette.text.disabled,
                                                 },
+                                                [`& .${gaugeClasses.valueText} text`]: {
+                                                    fill: "#FFFFFF" 
+                                                  },
                                             })}
                                         />
                                     </div>
@@ -289,6 +327,9 @@ function SubmitButton() {
                                                 [`& .${gaugeClasses.referenceArc}`]: {
                                                     fill: theme.palette.text.disabled,
                                                 },
+                                                [`& .${gaugeClasses.valueText} text`]: {
+                                                    fill: "#FFFFFF" 
+                                                  },
                                             })}
                                         />
                                     </div>

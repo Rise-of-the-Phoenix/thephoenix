@@ -4,13 +4,13 @@ import TextField from '@mui/material/TextField';
 import './page.css'
 import 'bootstrap/dist/css/bootstrap.css';
 
-const WelcomeButton: React.FC<WelcomeButtonProps> = ({}) => {
+const WelcomeButton: React.FC = ({}) => {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
         localStorage.setItem('phoneNumber', phoneNumber);
-        document.getElementById('input-section')?.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('modal')?.scrollIntoView({ behavior: 'smooth' });
         
         // try {
         //     const response = await fetch('https://yab6hygijj.execute-api.us-east-1.amazonaws.com/ai/create_record', {
@@ -40,13 +40,12 @@ const WelcomeButton: React.FC<WelcomeButtonProps> = ({}) => {
                     type='textarea'
                     required
                     id="outlined-required"
-                    sx={{ backgroundColor: 'white' }}
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="Enter your phone number"
                 />
             </form>
-            <button class="btn btn-success btn-sm" type="submit" id="submit">Submit</button>
+            <button className="btn btn-success btn-sm" type="submit" id="submit">Submit</button>
         </div>
     );
 };
