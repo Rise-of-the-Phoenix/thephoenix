@@ -81,31 +81,18 @@ function SubmitButton() {
             }
         };
 
+        
+ 
         return (
             <div>
                 <button class="btn btn-success btn-md" onClick={fetchData} id="getrecon">
                     Get Recommendations
                 </button>
-                {(cropSuggestion || soilImprovements) && (
-                    <div className="bg-yellow-900 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
-                        {cropSuggestion && (
-                            <div className="mr-4">
-                                <label className="block text-lg font-medium text-gray-700">Crop Recommendations</label>
-                                <textarea value={cropSuggestion} className="mt-2 p-2 w-full h-48" readOnly />
-                            </div>
-                        )}
-                        {soilImprovements && (
-                            <div>
-                                <label className="block text-lg font-medium text-gray-700">Soil Improvements</label>
-                                <textarea value={soilImprovements} className="mt-2 p-2 w-full h-48" style={{ width: '200%' }} readOnly />
-                            </div>
-                        )}
-                    </div>
-                )}
+                
                 {(nitrogenArray.length > 0 && phosphorusArray.length > 0 && potassiumArray.length > 0) && (
-                    <div className="bg-yellow-100 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
+                    <div className="bg-yellow-100 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block',  float:"right", margin: '15px auto'}}>
                         <LineChart
-                            width={500}
+                            width={350}
                             height={300}
                             sx={{ backgroundColor: 'cream' }}
                             series={[
@@ -117,6 +104,23 @@ function SubmitButton() {
                         />
                     </div>
                 )}
+                {(cropSuggestion || soilImprovements) && (
+                    <div className="bg-yellow-900 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block', margin: '5px auto' }}>
+                        {cropSuggestion && (
+                            <div className="mr-4">
+                                <label className="block text-lg font-medium text-white">Crop Recommendations</label>
+                                <textarea value={cropSuggestion} className="mt-2 p-2 w-full h-48" readOnly />
+                            </div>
+                        )}
+                        {soilImprovements && (
+                            <div>
+                                <label className="block text-lg font-medium text-white">Soil Improvements</label>
+                                <textarea value={soilImprovements} className="mt-2 p-2 w-full h-48" readOnly />
+                            </div>
+                        )}
+                    </div>
+                )}
+                
             </div>
         )
 

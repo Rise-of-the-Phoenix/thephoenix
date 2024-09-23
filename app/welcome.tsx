@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import './page.css'
 import 'bootstrap/dist/css/bootstrap.css';
 
-function WelcomeButton() {
+const WelcomeButton: React.FC<WelcomeButtonProps> = ({ className }) => {
     const [phoneNumber, setPhoneNumber] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
