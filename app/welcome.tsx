@@ -7,28 +7,23 @@ import 'bootstrap/dist/css/bootstrap.css';
 const WelcomeButton: React.FC = ({}) => {
     const [phoneNumber, setPhoneNumber] = useState('');
 
+
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        localStorage.setItem('phoneNumber', phoneNumber);
-        document.getElementById('modal')?.scrollIntoView({ behavior: 'smooth' });
-        
-        // try {
-        //     const response = await fetch('https://yab6hygijj.execute-api.us-east-1.amazonaws.com/ai/create_record', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify({ phoneNumber }),
-        //     });
+        try {
+            console.log("Submitted 1");
+            localStorage.setItem('phoneNumber', phoneNumber);
+            document.getElementById('modal')?.scrollIntoView({ behavior: 'smooth' });
+            console.log("Submitted 2");
+        } catch (error) {
+            console.error("Error during form submission:", error);
+        }
+    };
 
-        //     if (response.ok) {
-        //         document.getElementById('input-section')?.scrollIntoView({ behavior: 'smooth' });
-        //     } else {
-        //         console.error('Failed to submit phone number');
-        //     }
-        // } catch (error) {
-        //     console.error('Error:', error);
-        // }
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newPhoneNumber = event.target.value;
+        setPhoneNumber(newPhoneNumber);
+        localStorage.setItem('phoneNumber', newPhoneNumber);
     };
 
     return (
@@ -44,8 +39,8 @@ const WelcomeButton: React.FC = ({}) => {
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="Enter your phone number"
                 />
-            </form>
             <button className="btn btn-success btn-sm" type="submit" id="submit">Submit</button>
+        </form>
         </div>
     );
 };

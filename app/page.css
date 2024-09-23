@@ -88,7 +88,7 @@ select{
 
 #outlined-required{
     width: 100% !important;
-    height: 36px !important;
+    height: 40px !important;
     color: #000 !important;
     border-radius: 3px;
     padding: 7px;
@@ -107,8 +107,8 @@ select{
     border-radius: 5px;
     position: relative;
     width: 80px;
-    top: -46.5px;
-    left: 55%;
+    top: -41.5px;
+    left: 110%;
 
 }
 
