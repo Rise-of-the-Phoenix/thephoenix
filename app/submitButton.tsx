@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { LineChart } from '@mui/x-charts/LineChart';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 import './page.css'
+import { colors } from "@mui/material";
  
 function SubmitButton() {
 
@@ -122,173 +123,180 @@ function SubmitButton() {
  
         return (
             <div>
-                <button class="btn btn-success btn-lg" onClick={fetchData} id="getrecon">Get Recommendations</button>
+                <button class="btn btn-success btn-lg" onClick={fetchData} id="getrecon">Get recommendations</button>
                 
-                {(nitrogenArray.length > 0 && phosphorusArray.length > 0 && potassiumArray.length > 0) && (
-                    <div className="bg-yellow-100 rounded-lg p-4 border border-green-800 mx-auto" id="linechart" style={{ maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block',  float:"right", margin: '15px auto'}}>
-                        <LineChart
-                            width={350}
-                            height={300}
-                            sx={{ backgroundColor: 'cream' }}
-                            series={[
-                                { data: nitrogenArray, label: 'N' },
-                                { data: phosphorusArray, label: 'P' },
-                                { data: potassiumArray, label: 'K'}
-                            ]}
-                            xAxis={[{ scaleType: 'point', data: nitrogenArray.map((_, index) => `${index + 1}`) }]}
-                        />
-                    </div>
-                )}
-
-                {(cropSuggestion || soilImprovements || recommendedNitrogen) && (
-                    <div className="bg-yellow-900 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block', margin: '5px auto' }}>
-                        {cropSuggestion && (
-                            <div className="mr-4">
-                                <label className="block text-lg font-medium text-white">Crop Recommendations</label>
-                                <textarea value={cropSuggestion} className="mt-2 p-2 w-full h-48" readOnly />
-                            </div>
-                        )}
-                        {soilImprovements && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Soil Improvements</label>
-                                <textarea value={soilImprovements} className="mt-2 p-2 w-full h-48" readOnly />
-                            </div>
-                        )}
-                         {recommendedNitrogen && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Recommended Values</label>
-                                <textarea value={recommendedNitrogen + "\n" + recommendedPhosphorus + "\n" + recommendedPotassium + "\n" + recommendedPh} className="mt-2 p-2 w-full h-48" readOnly />
+                <div class="row">
+                    <div class="col-5" id="linechart">
+                        {(nitrogenArray.length > 0 && phosphorusArray.length > 0 && potassiumArray.length > 0) && (
+                            <div className=" mx-auto">
+                            <LineChart
+                                width={350}
+                                height={300}
+                                series={[
+                                    { data: nitrogenArray, label: 'N' },
+                                    { data: phosphorusArray, label: 'P' },
+                                    { data: potassiumArray, label: 'K'}
+                                ]}
+                                xAxis={[{ scaleType: 'point', data: nitrogenArray.map((_, index) => `${index + 1}`) }]}
+                            />
                             </div>
                         )}
                     </div>
-                )}
 
-                {(metricNitrogen || metricPhosphorus || metricPotassium || metricPh || metricSoilStructure || metricOverall) && (
-                    <div className="bg-neutral-300 gap-1 rounded-lg p-4 border border-green-800 mx-auto" style={{maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block'}}>
-                        {metricNitrogen !== undefined && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Nitrogen Rating</label>
-                                <Gauge 
-                                    width={100} height={100} value={metricNitrogen} valueMax={10}
-                                    cornerRadius="50%"
-                                    sx={(theme) => ({
-                                        [`& .${gaugeClasses.valueText}`]: {
-                                            fontSize: 40,
-                                        },
-                                        [`& .${gaugeClasses.valueArc}`]: {
-                                            fill: '#52b202',
-                                        },
-                                        [`& .${gaugeClasses.referenceArc}`]: {
-                                            fill: theme.palette.text.disabled,
-                                        },
-                                    })}
-                                />
-                            </div>
-                        )}
-                        {metricPhosphorus !== undefined && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Phosphorus Rating</label>
-                                <Gauge 
-                                    width={100} height={100} value={metricPhosphorus} valueMax={10}
-                                    cornerRadius="50%"
-                                    sx={(theme) => ({
-                                        [`& .${gaugeClasses.valueText}`]: {
-                                            fontSize: 40,
-                                        },
-                                        [`& .${gaugeClasses.valueArc}`]: {
-                                            fill: '#52b202',
-                                        },
-                                        [`& .${gaugeClasses.referenceArc}`]: {
-                                            fill: theme.palette.text.disabled,
-                                        },
-                                    })}
-                                />
-                            </div>
-                        )}
-                        {metricPotassium !== undefined && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Potassium Rating</label>
-                                <Gauge 
-                                    width={100} height={100} value={metricPotassium} valueMax={10}
-                                    cornerRadius="50%"
-                                    sx={(theme) => ({
-                                        [`& .${gaugeClasses.valueText}`]: {
-                                            fontSize: 40,
-                                        },
-                                        [`& .${gaugeClasses.valueArc}`]: {
-                                            fill: '#52b202',
-                                        },
-                                        [`& .${gaugeClasses.referenceArc}`]: {
-                                            fill: theme.palette.text.disabled,
-                                        },
-                                    })}
-                                />
-                            </div>
-                        )}
-                        {metricPh !== undefined && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">pH Rating</label>
-                                <Gauge 
-                                    width={100} height={100} value={metricPh} valueMax={10}
-                                    cornerRadius="50%"
-                                    sx={(theme) => ({
-                                        [`& .${gaugeClasses.valueText}`]: {
-                                            fontSize: 40,
-                                        },
-                                        [`& .${gaugeClasses.valueArc}`]: {
-                                            fill: '#52b202',
-                                        },
-                                        [`& .${gaugeClasses.referenceArc}`]: {
-                                            fill: theme.palette.text.disabled,
-                                        },
-                                    })}
-                                />
-                            </div>
-                        )}
-                        {metricSoilStructure !== undefined && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Soil Structure Rating</label>
-                                <Gauge 
-                                    width={100} height={100} value={metricSoilStructure} valueMax={10}
-                                    cornerRadius="50%"
-                                    sx={(theme) => ({
-                                        [`& .${gaugeClasses.valueText}`]: {
-                                            fontSize: 40,
-                                        },
-                                        [`& .${gaugeClasses.valueArc}`]: {
-                                            fill: '#52b202',
-                                        },
-                                        [`& .${gaugeClasses.referenceArc}`]: {
-                                            fill: theme.palette.text.disabled,
-                                        },
-                                    })}
-                                />
-                            </div>
-                        )}
-                        {metricOverall !== undefined && (
-                            <div>
-                                <label className="block text-lg font-medium text-white">Overall Rating</label>
-                                <Gauge 
-                                    width={100} height={100} value={metricOverall} valueMax={10}
-                                    cornerRadius="50%"
-                                    sx={(theme) => ({
-                                        [`& .${gaugeClasses.valueText}`]: {
-                                            fontSize: 40,
-                                        },
-                                        [`& .${gaugeClasses.valueArc}`]: {
-                                            fill: '#52b202',
-                                        },
-                                        [`& .${gaugeClasses.referenceArc}`]: {
-                                            fill: theme.palette.text.disabled,
-                                        },
-                                    })}
-                                />
+                    <div class="col-3">
+                        {(cropSuggestion || soilImprovements || recommendedNitrogen) && (
+                            <div className="mx-auto c" id="linechart2">
+                                {cropSuggestion && (
+                                    <div id="recontent">
+                                        <label id="sugglabel">Crop Recommendations</label>
+                                        <textarea id="sugg" value={cropSuggestion} readOnly />
+                                    </div>
+                                )}
+                                {soilImprovements && (
+                                    <div id="recontent">
+                                        <label id="sugglabel">Soil Improvements</label>
+                                        <textarea id="sugg"  value={soilImprovements} readOnly />
+                                    </div>
+                                )}
+                                {recommendedNitrogen && (
+                                    <div id="recontent">
+                                        <label id="sugglabel">Recommended Values (N, P, K, pH)</label>
+                                        <textarea id="sugg"   value={recommendedNitrogen + "\n" + recommendedPhosphorus + "\n" + recommendedPotassium + "\n" + recommendedPh} readOnly />
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
-                    
-                )}
 
+                    <div class="col-4">
+                        {(metricNitrogen || metricPhosphorus || metricPotassium || metricPh || metricSoilStructure || metricOverall) && (
+                            <div className="mx-auto" id="linechart3">
+                                {metricNitrogen !== undefined && (
+                                    <div id="recontent-min">
+                                        <label id="recontent-min-label" >Nitrogen Rating</label>
+                                            <div >
+                                                <Gauge 
+                                                    width={100} height={100} value={metricNitrogen} valueMax={10}
+                                                    cornerRadius="50%"
+                                                    sx={(theme) => ({
+                                                        [`& .${gaugeClasses.valueText}`]: {
+                                                            fontSize: 40
+                                                        },
+                                                        [`& .${gaugeClasses.valueArc}`]: {
+                                                            fill: '#52b202',
+                                                        },
+                                                        [`& .${gaugeClasses.referenceArc}`]: {
+                                                            fill: theme.palette.text.disabled,
+                                                        },
+                                                    })}
+                                                />
+                                            </div>
+                                    </div>
+                                )}
+                                {metricPhosphorus !== undefined && (
+                                    <div id="recontent-min">
+                                        <label id="recontent-min-label" >Phosphorus Rating</label>
+                                        <Gauge 
+                                            width={100} height={100} value={metricPhosphorus} valueMax={10}
+                                            cornerRadius="50%"
+                                            sx={(theme) => ({
+                                                [`& .${gaugeClasses.valueText}`]: {
+                                                    fontSize: 40,
+                                                },
+                                                [`& .${gaugeClasses.valueArc}`]: {
+                                                    fill: '#52b202',
+                                                },
+                                                [`& .${gaugeClasses.referenceArc}`]: {
+                                                    fill: theme.palette.text.disabled,
+                                                },
+                                            })}
+                                        />
+                                    </div>
+                                )}
+                                {metricPotassium !== undefined && (
+                                    <div id="recontent-min">
+                                        <label id="recontent-min-label" >Potassium Rating</label>
+                                        <Gauge 
+                                            width={100} height={100} value={metricPotassium} valueMax={10}
+                                            cornerRadius="50%"
+                                            sx={(theme) => ({
+                                                [`& .${gaugeClasses.valueText}`]: {
+                                                    fontSize: 40,
+                                                },
+                                                [`& .${gaugeClasses.valueArc}`]: {
+                                                    fill: '#52b202',
+                                                },
+                                                [`& .${gaugeClasses.referenceArc}`]: {
+                                                    fill: theme.palette.text.disabled,
+                                                },
+                                            })}
+                                        />
+                                    </div>
+                                )}
+                                {metricPh !== undefined && (
+                                    <div id="recontent-min">
+                                        <label id="recontent-min-label">pH Rating</label>
+                                        <Gauge 
+                                            width={100} height={100} value={metricPh} valueMax={10}
+                                            cornerRadius="50%"
+                                            sx={(theme) => ({
+                                                [`& .${gaugeClasses.valueText}`]: {
+                                                    fontSize: 40,
+                                                },
+                                                [`& .${gaugeClasses.valueArc}`]: {
+                                                    fill: '#52b202',
+                                                },
+                                                [`& .${gaugeClasses.referenceArc}`]: {
+                                                    fill: theme.palette.text.disabled,
+                                                },
+                                            })}
+                                        />
+                                    </div>
+                                )}
+                                {metricSoilStructure !== undefined && (
+                                    <div id="recontent-min">
+                                        <label id="recontent-min-label" >Soil Structure Rating</label>
+                                        <Gauge 
+                                            width={100} height={100} value={metricSoilStructure} valueMax={10}
+                                            cornerRadius="50%"
+                                            sx={(theme) => ({
+                                                [`& .${gaugeClasses.valueText}`]: {
+                                                    fontSize: 40,
+                                                },
+                                                [`& .${gaugeClasses.valueArc}`]: {
+                                                    fill: '#52b202',
+                                                },
+                                                [`& .${gaugeClasses.referenceArc}`]: {
+                                                    fill: theme.palette.text.disabled,
+                                                },
+                                            })}
+                                        />
+                                    </div>
+                                )}
+                                {metricOverall !== undefined && (
+                                    <div id="recontent-min">
+                                        <label id="recontent-min-label">Overall Rating</label>
+                                        <Gauge 
+                                            width={100} height={100} value={metricOverall} valueMax={10}
+                                            cornerRadius="50%"
+                                            sx={(theme) => ({
+                                                [`& .${gaugeClasses.valueText}`]: {
+                                                    fontSize: 40,
+                                                },
+                                                [`& .${gaugeClasses.valueArc}`]: {
+                                                    fill: '#52b202',
+                                                },
+                                                [`& .${gaugeClasses.referenceArc}`]: {
+                                                    fill: theme.palette.text.disabled,
+                                                },
+                                            })}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </div>
                 
             </div>
         )

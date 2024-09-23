@@ -19,7 +19,7 @@ export default function Home() {
     
   <div>
 
-    <nav class="navbar navbar-tertiary">
+    <nav class="navbar fixed-top navbar-tertiary">
       <div class="container">
         <a class="navbar-brand" href="#" id="img"></a>
         <h4 id="teamname">Team Phoenix</h4>
@@ -36,7 +36,7 @@ export default function Home() {
                 <FormControl variant="outlined">
                   <OutlinedInput
                     id="outlined-adornment-nitrogen"
-                    sx={{ backgroundColor: 'white' }}
+                    sx={{ backgroundColor: 'white',fontWeight: 'bolder' }}
                     endAdornment={<InputAdornment position="end" id="value">mg/kg</InputAdornment>}
                     aria-describedby="outlined-nitrogen-helper-text"
                     inputProps={{
@@ -48,7 +48,7 @@ export default function Home() {
                 <FormControl variant="outlined">
                   <OutlinedInput
                     id="outlined-adornment-phosphorus"
-                    sx={{ backgroundColor: 'white' }}
+                    sx={{ backgroundColor: 'white',fontWeight: 'bolder' }}
                     endAdornment={<InputAdornment position="end" id="value">mg/kg</InputAdornment>}
                     aria-describedby="outlined-phosphorus-helper-text"
                     inputProps={{
@@ -60,7 +60,7 @@ export default function Home() {
                 <FormControl variant="outlined">
                   <OutlinedInput
                     id="outlined-adornment-potassium"
-                    sx={{ backgroundColor: 'white' }}
+                    sx={{ backgroundColor: 'white', fontWeight: 'bolder' }}
                     endAdornment={<InputAdornment position="end" id="value">mg/kg</InputAdornment>}
                     aria-describedby="outlined-potassium-helper-text"
                     inputProps={{
@@ -72,7 +72,7 @@ export default function Home() {
                 <FormControl variant="outlined">
                   <OutlinedInput
                     id="outlined-adornment-ph"
-                    sx={{ backgroundColor: 'white' }}
+                    sx={{ backgroundColor: 'white', fontWeight: 'bolder'}}
                     endAdornment={<InputAdornment position="end" id="value"></InputAdornment>}
                     aria-describedby="outlined-ph-helper-text"
                     inputProps={{
@@ -84,8 +84,8 @@ export default function Home() {
                 <FormControl variant="outlined">
                   <OutlinedInput
                     id="outlined-adornment-water"
-                    sx={{ backgroundColor: 'white' }}
-                    endAdornment={<InputAdornment position="end" id="value">%</InputAdornment>}
+                    sx={{ backgroundColor: 'white', fontWeight: 'bolder' }}
+                    endAdornment={<InputAdornment position="end">%</InputAdornment>}
                     aria-describedby="outlined-water-helper-text"
                     inputProps={{
                       'aria-label': 'Water Level',
@@ -100,9 +100,10 @@ export default function Home() {
                     <option value="clay">Clay</option>
                     <option value="sand">Sand</option>
                   </select>
-                </FormControl>_
+                </FormControl>
               </div>
             </div>
+            <SubmitButton />
          </main>
       </div>
     </div>
