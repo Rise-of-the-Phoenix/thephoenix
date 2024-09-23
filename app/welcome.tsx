@@ -33,7 +33,7 @@ const WelcomeButton: React.FC = ({}) => {
 
     return (
         <div id="welcome">
-            <h1 id="welcome-h1">Welcome to Farmsville.ai</h1>
+            <h1 id="welcome-h1">Welcome to uFarm.ai</h1>
             <p id="welcome-p">Put your Phone Number in and get started</p>
             <form onSubmit={handleSubmit} id="onsubmit">
                 <input
