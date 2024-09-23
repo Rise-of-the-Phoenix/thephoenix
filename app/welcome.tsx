@@ -32,44 +32,19 @@ const WelcomeButton: React.FC<WelcomeButtonProps> = ({}) => {
     };
 
     return (
-<<<<<<< HEAD
         <div id="welcome">
-            <h1 id="welcome-h1">Welcome to Farmers Friend</h1>
+            <h1 id="welcome-h1">Welcome to Farmsville.ai</h1>
             <p id="welcome-p">Put your Phone Number in and get started</p>
             <form onSubmit={handleSubmit} id="onsubmit">
-=======
-        <div className="bg-lime-600 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content' }}>
-            <h1 style={{ fontSize: '2em', color: 'white', fontWeight: 'bold', textAlign: 'center' }}>Welcome to Farmers Friend</h1>
-            <p style={{ fontSize: '1em', color: 'white', textAlign: 'center' }}>Put your Phone Number in and get started</p>
-            <form onSubmit={handleSubmit} style={{ textAlign: 'center' }}>
->>>>>>> dd68b7eadeb950b5d0c4e80f1b00f681b558699e
-                <TextField
+                <input
+                    type='textarea'
                     required
                     id="outlined-required"
-                    label="Required"
                     sx={{ backgroundColor: 'white' }}
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                     placeholder="Enter your phone number"
                 />
-<<<<<<< HEAD
-=======
-
-                <div style={{ marginTop: '1em' }}></div>
-                <button 
-                    type="submit" 
-                    style={{ 
-                        borderRadius: '12px', 
-                        padding: '0.5em 1em', 
-                        backgroundColor: '#4CAF50', 
-                        color: 'white', 
-                        border: 'none', 
-                        cursor: 'pointer' 
-                    }}
-                >
-                    Submit
-                </button>
->>>>>>> dd68b7eadeb950b5d0c4e80f1b00f681b558699e
             </form>
             <button class="btn btn-success btn-sm" type="submit" id="submit">Submit</button>
         </div>

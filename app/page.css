@@ -6,7 +6,14 @@ body{
 }
 
 nav{
-    position: fixed;
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    background-color: #000 !important;
+}
+
+p{
+    font-weight: bolder !important;
 }
 
 #result{
@@ -18,9 +25,11 @@ nav{
     width: 90% !important;
     height: 200px !important;
     border: none !important;
+    border-radius: 7px;
     margin-top: 50px;
     margin-left: 60px;
-    opacity: 80%;
+    opacity: 60%;
+    background-color: #06402B;
     
 }
 
@@ -37,24 +46,24 @@ select{
 }
 
 #welcome{
-   background-color: #65A30D;
+   background-color: #06402B;
    color:#fff;
    width: 90%;
    height: 230px;
-   border-radius: 5px;
-   margin-top:30%;
+   border-radius: 7px;
+   margin-top:20%;
    margin-left: 60px;
-   opacity: 80%;
+   opacity: 70%;
    
 }
 
 #welcome-h1{
     padding: 5px;
-   text-align: center;
-   margin-top: 20px;
-   font-weight: bold;
-   color: #fff;
-   opacity: 100% !important;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #fff;
+    opacity: 100% !important;
 }
 
 #welcome-p{
@@ -66,37 +75,52 @@ select{
 
 }
 
-img {
+#img {
     background-image: url( ./phoenix.png );
+    width: 40px;
+    height: 40px;
 
+}
+
+#teamname{
+    color: #fff;
+    padding-right: 10px;
+    font-weight: bold;
 }
 
 #outlined-required{
     width: 100% !important;
-    height: 8px !important;
-    background-color: #fff !important;
+    height: 36px !important;
     color: #000 !important;
-    border-radius: 5px;
+    border-radius: 3px;
+    padding: 7px;
 }
 
 #onsubmit{
     padding: 10px !important;
     position: relative;
-    left: 45%;
+    left: 38%;
     width: 200px;
+    border-radius: 15px;
 }
 
 #submit{
     padding: 10px !important;
+    border-radius: 5px;
     position: relative;
     width: 80px;
-    top: -49px;
-    left: 53.5%;
+    top: -46.5px;
+    left: 55%;
 
 }
 
 #getrecon{
     margin-top: 20px !important;
     position: relative;
-    left: 320%;
+    left: 50% !important;
+    top: -490px !important;
+}
+
+#linechart{
+    
 }

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { LineChart } from '@mui/x-charts/LineChart';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
+import './page.css'
  
 function SubmitButton() {
 
@@ -121,12 +122,10 @@ function SubmitButton() {
  
         return (
             <div>
-                <button class="btn btn-success btn-md" onClick={fetchData} id="getrecon">
-                    Get Recommendations
-                </button>
+                <button class="btn btn-success btn-lg" onClick={fetchData} id="getrecon">Get Recommendations</button>
                 
                 {(nitrogenArray.length > 0 && phosphorusArray.length > 0 && potassiumArray.length > 0) && (
-                    <div className="bg-yellow-100 rounded-lg p-4 border border-green-800 mx-auto" style={{ maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block',  float:"right", margin: '15px auto'}}>
+                    <div className="bg-yellow-100 rounded-lg p-4 border border-green-800 mx-auto" id="linechart" style={{ maxWidth: 'fit-content', maxHeight: 'fit-content', display: 'block',  float:"right", margin: '15px auto'}}>
                         <LineChart
                             width={350}
                             height={300}
